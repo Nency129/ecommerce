@@ -20,23 +20,23 @@ function Carousel() {
   };
   const slides = [
     {
-      url: "https://wallpapertag.com/wallpaper/full/b/1/3/631837-beautiful-scenery-wallpapers-2880x1800-htc.jpg",
+      url: "https://i.pinimg.com/originals/e8/01/cf/e801cff3c232eafc15749f7c8c67fe6f.jpg",
     },
     {
-      url: "https://wallpapercave.com/wp/WIKDCoh.jpg",
+      url: "https://tse4.mm.bing.net/th?id=OIP.QBOn3RO-zdaOlwlgLwKJmwHaFE&pid=Api&P=0&h=180",
     },
     {
-      url: "http://getwallpapers.com/wallpaper/full/b/c/d/257781.jpg",
+      url: "https://tse1.mm.bing.net/th?id=OIP.NBSsm18jp95qSJG2ZBFd5wHaEm&pid=Api&P=0&h=180",
     },
     {
-      url: "http://www.pixelstalk.net/wp-content/uploads/2016/06/HD-Fall-Scenery-Image.jpg",
+      url: "https://wallpapercave.com/wp/wp6326114.jpg",
     },
   ];
   return (
-    <div className="max-w-[1000px] h-[300px] m-w-full m-auto p-2 relative group">
+    <div className="max-w-[1000px] h-[385px] m-w-full m-auto p-2 relative group">
       <div
         style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
-        className="w-full h-full bg-cover bg-center duration-500"
+        className="w-full h-full bg-contain bg-center bg-no-repeat duration-500"
       ></div>
       <FontAwesomeIcon
         icon={faChevronLeft}
@@ -46,7 +46,7 @@ function Carousel() {
       <FontAwesomeIcon
         icon={faChevronRight}
         className="absolute top-[50%] -translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer"
-        onClick={nextslide}      
+        onClick={nextslide}
       />
     </div>
   );
