@@ -1,24 +1,34 @@
-import React from "react";
-import menu from "../assets/menu.png";
-import ms from "../assets/logo-ms.png";
+import React,{useState} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMagnifyingGlass,
   faCartShopping,
   faUser,
+  faFilterCircleXmark,
   faBell,
 } from "@fortawesome/free-solid-svg-icons";
+import Filter from "./Filter";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
+  const [isSideDrawerOpen, setIsSideDrawerOpen] = useState(false);
+  const handleFilter = () => {
+    setIsSideDrawerOpen(!isSideDrawerOpen);
+  };
+  const navigate=useNavigate();
+
+  const navigatetocart=()=>{
+    navigate("/cart")
+  }
+  const navigatetohome=()=>{
+    navigate("/")
+  }
+
   return (
-    <div className="flex justify-between ">
+    <div className="flex justify-between mb-5">
       <div className="flex space-x-4">
-        <div>
-          <img src={menu} alt="logo" width={"28px"} />
-        </div>
         <div className="lg:flex space-x-2 py-1 sm:hidden">
-          <img src={ms} alt="logo" width={"20px"} style={{ height: "20px" }} />
-          <p className="text-white font-semibold">Microsoft Start</p>
+          <p className="text-white font-semibold cursor-pointer" onClick={navigatetohome}>Ecommerce</p>
         </div>
       </div>
 
@@ -34,23 +44,52 @@ function Header() {
       </div>
 
       <div className="flex space-x-3">
-        <FontAwesomeIcon
-          icon={faCartShopping}
-          className="h-6 w-6 "
-          style={{ color: "white" }}
-        />
-        <FontAwesomeIcon
-          icon={faBell}
-          className="h-6 w-6"
-          style={{ color: "white" }}
-        />
-        <FontAwesomeIcon
-          icon={faUser}
-          className="h-6 w-6"
-          style={{ color: "white" }}
-        />
+        <div className="group">
+          <FontAwesomeIcon
+            icon={faCartShopping}
+            className="h-6 w-6 "
+            style={{ color: "white" }}
+            onClick={navigatetocart}
+          />
+          <span className="hidden group-hover:block absolute top-[8%] right-32">
+            view cart
+          </span>
+        </div>
+        <div className="group">
+          <FontAwesomeIcon
+            icon={faBell}
+            className="h-6 w-6"
+            style={{ color: "white" }}
+          />
+          <span className="hidden group-hover:block absolute top-[8%] right-20">
+            notification
+          </span>
+        </div>
+        <div className="group">
+          <FontAwesomeIcon
+            icon={faUser}
+            className="h-6 w-6"
+            style={{ color: "white" }}
+          />
+          <span className="hidden group-hover:block absolute top-[8%] right-15">
+            profile
+          </span>
+        </div>
+        <div className="group">
+          <FontAwesomeIcon
+            icon={faFilterCircleXmark}
+            className="h-6 w-6"
+            style={{ color: "white" }}
+            onClick={handleFilter}
+          />
+          <Filter isOpen={isSideDrawerOpen} onClose={handleFilter} />
+          <span className="hidden group-hover:block absolute top-[8%] right-8">
+            filter
+          </span>
+        </div>
       </div>
     </div>
+
   );
 }
 
